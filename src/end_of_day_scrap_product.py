@@ -3,3 +3,5 @@ class EndOfDayScrapProduct():
          self.name = name 
          self.order_quantity = order_quantity
          self.weight = weight
+
+   

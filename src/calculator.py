@@ -28,15 +28,14 @@ class Calculator():
         return total
     
     def available_scrap_doughs(self):
-        if self.total_scraps >= self.scrap_dough_weight:
-            total = self.total_scraps
-            for product in self.end_of_day_scrap_orders:
-                total -= product.weight 
-
-    def subtract_scrap_doughs(self, dough_total):
-        available_scraps = self.total_scraps
-        if available_scraps >= self.scrap_dough_weight:
-            return dough_total - available_scraps // self.scrap_dough_weight
-    
+        total = self.total_scraps
+        for product in self.end_of_day_scrap_orders:
+            if self.total_scraps >= self.scrap_dough_weight:
+                total -= (product.weight * product.order_quantity)
+            if total // self.scrap_dough_weight >= 0: 
+                return total // self.scrap_dough_weight
+            else: 
+                return 0
+        
    
 
